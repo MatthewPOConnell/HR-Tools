@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import GridSearchCV
 
-#Turning all values into scaled numbers after reading in a spreadsheet
+#Turning all values into scaled numbers after reading in a spreadsheet and dropping irrelevant data
 df = pd.read_csv(r'C:\Users\SEANKurian\Desktop\attritionSheet.csv')
 df_encoded = df.apply(preprocessing.LabelEncoder().fit_transform)
 df_encoded = df_encoded.drop(columns=['EmployeeCount', 'EmployeeNumber', 'Over18', 'StandardHours'])
@@ -35,5 +35,6 @@ print(modelGSCV.best_score_)
 
 #When using the data we set aside for predictions and comparing to actual values, we find the prediction
 # is correct ~81.8% of the time
-print(modelGSCV.predict(pred_test))
+print(modelGSCV.predict(pred_test)[0:25])
+print(tar_test[0:25])
 print(modelGSCV.score(pred_test,tar_test))
