@@ -65,6 +65,10 @@ h1 {
     
 }
 
+tr:nth-child(even) {
+  background-color: lightgrey;
+}
+
 .row::after {
     content: "";
     clear: both;
