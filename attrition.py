@@ -66,11 +66,15 @@ def corrMatrix(data):
 predictors, target, df = loadFile(r'C:\Users\SEANKurian\Desktop\attritionSheet.csv')
 pred_train, pred_test, tar_train, tar_test = train_test_split(predictors, target, test_size=0.25, random_state=1)
 trainedModel = trainModel(pred_train, tar_train)
-predictAttrition(trainedModel, pred_test)
-corrMatrix(df)
-#print (bestScore(trainedModel))
-#print (bestParams(trainedModel))
-#print (score(trainedModel, pred_test, tar_test))
+#predictAttrition(trainedModel, pred_test)
+#corrMatrix(df)
+samplePerson = pred_test[0:1]
+print(samplePerson)
+if predictAttrition(trainedModel,samplePerson) == 1 :
+    print('Person is at risk of attrition')
+else:
+    print('Person is not at risk of attrition')
+
 
 
 
