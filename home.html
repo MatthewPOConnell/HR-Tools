@@ -12,7 +12,9 @@
         <link rel="stylesheet" href="design.css">
         <title>IBM HR Tool</title>
         <script src="tabs.js"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+       
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
 
@@ -33,34 +35,246 @@
             <!--Side Navigation Menu-->
             <div class="col-2" style="border-right:solid black;" >
                 <div class="sidenav" style="text-align: justify;">
-                    <p class="navMenuButton" onclick="openTab(event, 'Home')">Home</p>
+                    <p class="navMenuButton" id="defaultOpen" onclick="openTab(event, 'Home')">Home</p>
                     <p class="navMenuButton" onclick="openTab(event, 'Compensation')">Employee Compensation</p>
-                    <p class="navMenuButton" id="defaultOpen" onclick="openTab(event, 'Attrition')">Employee Attrition</p>
+                    <p class="navMenuButton" onclick="openTab(event, 'Attrition')">Employee Attrition</p>
                 </div>
             </div>
             <!------------------------>
 
             <!--Home Tab-->
             <div id="Home" class="tabcontent">
-                <div class="col-10" style="border: solid blue">
-                    <p>Home</p>
+                <div class="col-10">
+                    <h3>Welcome to IBM's Attrition and Compensation tool</h3>
+                    <p>To get a report for a specific employee, click on your desired tab on the left and enter in the Employee's information.</p>
+                    <p>When you're finished, the result will be displayed on that page and stored below. Click on any of the records to report the result of that employee's attrition status/pay.</p>
                 </div>
-                <div class="col-10" style="border: solid blue">
-                
+                <div class="col-10">
+                    <table style="border-collapse: collapse;
+                    width: 100%;">
+                        <tr>
+                            <th style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Employee Name</th>
+                            <th style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Type of Report</th>
+                            <th style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Result</th>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Sean Kurian</td>
+                            <td style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Attrition</td>
+                            <td style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Likely to Leave</td>
+                          </tr>
+                          <tr>
+                            <td style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Ryan Higgins</td>
+                            <td style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Attrition</td>
+                            <td style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Likely to Stay</td>
+                          </tr>
+                          <tr>
+                            <td style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Matthew O'Connell</td>
+                            <td style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Attrition</td>
+                            <td style="border: 1px solid black;
+                            text-align: center;
+                            padding: 8px;">Likely to Leave</td>
+                          </tr>
+                    </table>
                 </div>
             </div>
             <!------------>
 
             <!--Compensation Tab-->
             <div id="Compensation" class="tabcontent">
-                    <div class="col-10" style="border: solid blue">
+                    <div class="col-10">
+                        <h2 style="margin-top: 0;margin-bottom: 5px; color: darkblue">Employee Details Form</h2>
                         <form>
-                            First name:<br>
-                            <input type="text" name="firstname"><br>
-                            Last name:<br>
+                            <u><b>Basic Information:</u></b>
+                            <br><br>
+                            First name:
+                            <input type="text" name="firstname">
+                            Last name:
                             <input type="text" name="lastname">
-                            
-                        </form>>
+                            <br>
+                            <br>
+                            Age:
+                            <input type="number" name="age">
+                            Gender:
+                            <select name="gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            Department:
+                            <select name="department">
+                                <option value="researchAndDevelopment">Research & Development</option>
+                                <option value="sales">Sales</option>
+                                <option value="humanResources">Human Resources</option>
+                            </select>
+    
+                            Years at IBM:
+                            <input type="number" name="yearsAtIBM">
+    
+                            <hr>
+    
+                            <u><b>Job Information:</u></b>
+                            <br><br>
+                            Travel Frequency:
+                            <select name="travelFrequency">
+                                <option value="frequently">Frequently Travel</option>
+                                <option value="rarely">Rarely Travel</option>
+                                <option value="never">Never Travel</option>
+                            </select>
+                            Job Role:
+                            <select name="jobRole">
+                                <option value="salesExecutive">Sales Executive</option>
+                                <option value="rarely">Rarely Travel</option>
+                                <option value="never">Never Travel</option>
+                            </select>
+                            Job Involvement (Low-Very High):
+                            <select name="jobInvolvement">
+                                <option value="1">Low</option>
+                                <option value="2">Medium</option>
+                                <option value="3">High</option>
+                                <option value="4">Very High</option>
+                            </select>
+                            <br><br>
+                            Work's Distance from Home (miles):
+                            <input type="number" name="distance">
+    
+                            Overtime?
+                            <input type="radio" name="overtime" value="yes" checked>Yes
+                            <input type="radio" name="overtime" value="no">No
+    
+                            Training Times Last Year:
+                            <input type="number" name="trainingTimes"><br>
+    
+                            <br>
+    
+                            Last Raise % Hike:
+                            <input type="number" name="lastHike">
+    
+                            Last Performance Rating:
+                            <select name="performanceRating">
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+    
+                            Stock Option Level:
+                            <select name="stockOptionLevel">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            <br><br>
+                            Years in Current Role:
+                            <input type="number" name="yearsCurrentRole">
+    
+                            Years since Last Promotion:
+                            <input type="number" name="yearsLastPromotion">
+    
+                            Years with Current Manager:
+                            <input type="number" name="yearsCurrentManager">
+                            <hr>
+    
+                            <u><b>Compensation and Satisfaction Information:</u></b>
+                            <br><br>
+                            Hourly Rate:
+                            <input type="number" name="hourlyRate">
+                            Daily Rate:
+                            <input type="number" name="dailyRate">
+                            Monthly Rate:
+                            <input type="number" name="dailyRate"></input>
+                            <br><br>
+                            Environment Satisfaction:
+                            <br>
+                            <input type="radio" name="environmentSatisfaction" value="1" checked>1<br>
+                            <input type="radio" name="environmentSatisfaction" value="2">2<br>
+                            <input type="radio" name="environmentSatisfaction" value="3">3<br>
+                            <input type="radio" name="environmentSatisfaction" value="4">4<br>
+    
+                            <br>
+                            Job Satisfaction:
+                            <br>
+                            <input type="radio" name="jobSatisfaction" value="1" checked>1<br>
+                            <input type="radio" name="jobSatisfaction" value="2">2<br>
+                            <input type="radio" name="jobSatisfaction" value="3">3<br>
+                            <input type="radio" name="jobSatisfaction" value="4">4<br>
+    
+                            <br>
+                            Relationship Satisfaction:
+                            <br>
+                            <input type="radio" name="relationshipSatisfaction" value="1" checked>1<br>
+                            <input type="radio" name="relationshipSatisfaction" value="2">2<br>
+                            <input type="radio" name="relationshipSatisfaction" value="3">3<br>
+                            <input type="radio" name="relationshipSatisfaction" value="4">4<br>
+    
+                            <br>
+                            Work Life Balance (low-high):
+                            <br>
+                            <input type="radio" name="workLife" value="1" checked>1<br>
+                            <input type="radio" name="workLife" value="2">2<br>
+                            <input type="radio" name="workLife" value="3">3<br>
+                            <input type="radio" name="workLife" value="4">4<br>
+    
+                            <hr>
+    
+                            <u><b>Personal Information:</u></b>
+                            <br><br>
+                            Education Level:
+                            <select name="educationLevel">
+                                <option value="1">Below College/University</option>
+                                <option value="2">Undergraduate</option>
+                                <option value="3">Commpleted Undergraduate</option>
+                                <option value="4">Completed Graduate</option>
+                                <option value="5">Completed Doctorate</option>
+                            </select>
+                            Education Field:
+                            <select name="educationField">
+                                <option value="lifeSciences">Life Sciences</option>
+                                <option value="medical">Medical</option>
+                                <option value="technicalDegree">Technical Degree</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="humanResourcesDegree">Human Resources</option>
+                                <option value="other">Other</option>
+                            </select>
+    
+                            <br><br>
+    
+                            Marital Status:
+                            <select name="maritalStatus">
+                                <option value="married">Married</option>
+                                <option value="single">Single</option>
+                                <option value="divorced">Divorced</option>
+                            </select>
+    
+                            Number of Companies Worked At:
+                            <input type="number" name="numCompanies">
+    
+                            Total Working Years
+                            <input type="number" name="numYears">
+                            <br><br>
+    
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Reset">
+                        </form>
                     </div>
                     <div class="col-10" style="border: solid blue">
                         
@@ -72,7 +286,7 @@
             <div id="Attrition" class="tabcontent">
                 <div class="col-10">
                     <h2 style="margin-top: 0;margin-bottom: 5px; color: darkblue">Employee Details Form</h2>
-                    <form>
+                    <form method="post">
                         <u><b>Basic Information:</u></b>
                         <br><br>
                         First name:
@@ -168,7 +382,7 @@
                         Daily Rate:
                         <input type="number" name="dailyRate">
                         Monthly Rate:
-                        <input type="number" name="dailyRate"></input>
+                        <input type="number" name="monthlyRate"></input>
                         <br><br>
                         Environment Satisfaction:
                         <br>
@@ -239,7 +453,7 @@
                         <input type="number" name="numYears">
                         <br><br>
 
-                        <input type="submit" value="Submit">
+                        <input type="submit" name="submit" value="Submit">
                         <input type="reset" value="Reset">
                     </form>
                 </div>
